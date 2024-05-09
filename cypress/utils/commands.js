@@ -587,3 +587,11 @@ Cypress.Commands.add('loadSampleData', (type) => {
     url: `${BASE_PATH}/api/sample_data/${type}`,
   });
 });
+
+Cypress.Commands.add('fleshTenantSettings', () => {
+  if (Cypress.env('SECURITY_ENABLED')) {
+    // Go to the home page to flesh the tenant settings
+    cy.visit(`/app/home`);
+    cy.waitForLoader();
+  }
+});
